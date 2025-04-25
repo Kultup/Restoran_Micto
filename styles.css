@@ -1,0 +1,2167 @@
+:root {
+    --primary-color: #c0a062; /* Elegant Gold */
+    --secondary-color: #1a1a1a; /* Dark Charcoal */
+    --light-background: #f8f8f8; /* Off-white for contrast */
+    --text-color-dark: #e0e0e0; /* Light gray for text on dark */
+    --text-color-light: #333333; /* Dark gray for text on light */
+    --font-headings: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+/* Global styles */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Це відступ зверху для фіксованого меню */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    color: var(--text-color-light);
+    background-color: #ffffff; /* Default light background */
+    /* padding-top: 60px; */ /* Removed - not needed with overlay */
+    /* transition: padding-top 0.3s ease; */ /* Removed */
+}
+
+/* Prevent body scroll when overlay is open */
+body.body-overlay-open {
+    overflow: hidden;
+}
+
+body.body-menu-open {
+    /* We might not need extra padding if the nav expands naturally */
+    /* padding-top: 260px; /* Example: Adjust based on opened menu height */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-headings);
+    font-weight: 700; /* Bold headings */
+    color: var(--secondary-color); /* Dark headings by default */
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+    margin-bottom: 3.5rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem; 
+}
+
+/* Underline effect for headings */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.header {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Parallax effect */
+    height: 100vh;
+    color: white;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%; /* Повертаємо вертикальний padding */
+    position: fixed;
+    width: 100%;
+    background-color: #000000;
+    z-index: 1000;
+    transition: background-color 0.3s ease, padding 0.3s ease; /* Оновлено transition */
+}
+
+.nav.scrolled {
+    background-color: #000000;
+    padding: 0.8rem 5%; /* Менший padding при прокрутці */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-family: var(--font-headings);
+    line-height: 1;
+    padding: 0.2rem 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 2.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem; /* Slightly smaller */
+    font-weight: 400;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+    background-color: transparent !important; /* Примусово прозорий фон */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hero {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.4rem; /* Slightly smaller */
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.cta-button,
+.submit-button {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px; /* More rounded */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover,
+.submit-button:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.hero .cta-button:hover {
+     color: white; /* Keep white text on hero hover */
+     border-color: white;
+}
+
+section {
+    padding: 6rem 10%;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    height: 250px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.contact-section {
+    background-color: white; /* Трохи змінив фон для контрасту */
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap; /* Дозволяє переносити елементи на мобільних */
+    gap: 2rem; /* Відстань між текстом і картою */
+    align-items: flex-start; /* Вирівнювання по верху */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    flex: 1; /* Займає доступний простір */
+    min-width: 300px; /* Мінімальна ширина для текстового блоку */
+    text-align: left;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem; /* Трохи менший відступ */
+    line-height: 1.6;
+}
+
+/* Замінюємо стилі #map на .map-container */
+.map-container {
+    flex: 1.5; /* Карта трохи ширша за текст */
+    min-width: 300px; /* Мінімальна ширина для карти */
+    /* height: 450px; */ /* Висота задається в атрибуті iframe */
+    border-radius: 5px;
+    /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */ /* Тінь вже не потрібна, бо є рамка */
+    /* background-color: #eee; */ /* Заглушка не потрібна */
+    position: relative; /* Для потенційного позиціонування */
+}
+
+.map-container iframe {
+    width: 100%; /* Переконуємось, що iframe займає всю ширину контейнера */
+    height: 100%; /* Переконуємось, що iframe займає всю висоту (якщо висота задана контейнеру) */
+    min-height: 450px; /* Мінімальна висота, щоб відповідати значенню в атрибуті */
+    display: block; /* Прибирає можливі відступи */
+}
+
+/* Адаптивність для секції контактів */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Текст і карта один під одним */
+        align-items: center; /* Центрування на мобільних */
+    }
+
+    .contact-info {
+        text-align: center; /* Центрування тексту */
+        margin-bottom: 2rem;
+    }
+
+    .map-container {
+        width: 100%; /* Карта на всю ширину */
+        height: 350px; /* Висота для мобільних */
+        flex: none; /* Скидання flex */
+    }
+
+    .map-container iframe {
+        min-height: 350px; /* Мінімальна висота для мобільних */
+    }
+}
+
+/* Спеціальні пропозиції */
+.special-offers-section {
+    padding: 6rem 10%;
+    background-color: var(--light-background);
+}
+
+.offers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.offer-card {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.offer-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.offer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.offer-card:hover .offer-image img {
+    transform: scale(1.05);
+}
+
+.offer-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.offer-content h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.offer-content p {
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.offer-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 700;
+    text-align: center;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.offer-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+/* Відгуки */
+.testimonials-section {
+    padding: 6rem 10%;
+    background-color: white;
+}
+
+.testimonials-slider {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.testimonial-card {
+    background: var(--light-background);
+    border-radius: 5px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin: 1rem;
+}
+
+.testimonial-content {
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-content p {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text-color-light);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1rem;
+    border: 3px solid var(--primary-color);
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    font-family: var(--font-headings);
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: var(--secondary-color);
+}
+
+.author-info p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Шеф-кухарі */
+.chefs-section {
+    padding: 6rem 10%;
+    background-color: var(--light-background);
+}
+
+.chefs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.chef-card {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.chef-card:hover {
+    transform: translateY(-10px);
+}
+
+.chef-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.chef-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.chef-card:hover .chef-image img {
+    transform: scale(1.05);
+}
+
+.chef-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.chef-info h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.chef-title {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.chef-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color-light);
+}
+
+/* Події та заходи */
+.events-section {
+    padding: 6rem 10%;
+    background-color: white;
+}
+
+.events-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.event-card {
+    display: flex;
+    background: var(--light-background);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateX(10px);
+}
+
+.event-date {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+}
+
+.event-date .day {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.event-date .month {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+.event-details {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.event-details h3 {
+    font-family: var(--font-headings);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.event-time {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.event-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.event-button {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.event-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+/* Наші переваги */
+.features-section {
+    padding: 6rem 10%;
+    background-color: var(--light-background);
+}
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 5px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+}
+
+.feature-card h3 {
+    font-family: var(--font-headings);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color-light);
+}
+
+/* Адаптивність для нових секцій */
+@media (max-width: 768px) {
+    .special-offers-section,
+    .testimonials-section,
+    .chefs-section,
+    .events-section,
+    .features-section {
+        padding: 4rem 5%;
+    }
+    
+    .offers-container,
+    .chefs-container,
+    .features-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .offer-image,
+    .chef-image {
+        height: 200px;
+    }
+    
+    .event-card {
+        flex-direction: column;
+    }
+    
+    .event-date {
+        flex-direction: row;
+        padding: 1rem;
+        justify-content: center;
+    }
+    
+    .event-date .day {
+        margin-right: 0.5rem;
+    }
+    
+    .event-date .month {
+        margin-top: 0;
+    }
+    
+    .event-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--text-color-dark);
+    /* text-align: center; */ /* Більше не центруємо весь контент */
+    padding: 4rem 10% 2rem; /* Збільшені відступи */
+    border-top: 3px solid var(--primary-color);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px; /* Мінімальна ширина колонки */
+}
+
+.footer-section h4 {
+    font-family: var(--font-headings);
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+    font-size: 0.95rem;
+    color: #bbb; /* Трохи світліший сірий для тексту */
+    line-height: 1.8;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    padding-left: 5px; /* Ефект зміщення при наведенні */
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 1rem;
+    color: #bbb;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.social-links svg { /* Стиль для ваших SVG іконок */
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #444; /* Лінія розділювач */
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Адаптивність футера */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-section {
+        min-width: 100%;
+        margin-bottom: 2rem;
+    }
+    .footer-section h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .social-links a {
+        margin: 0 0.7rem;
+    }
+}
+
+.reservation-section {
+    background-color: var(--light-background);
+    padding: 5rem 10%;
+}
+
+.reservation-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.reservation-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.reservation-form label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea {
+    width: 100%;
+    padding: 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--text-color-light);
+    background-color: #fdfdfd;
+    transition: border-color 0.3s;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus,
+.reservation-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(192, 160, 98, 0.3); /* Gold focus ring */
+}
+
+.reservation-form select {
+    background-color: white;
+    cursor: pointer;
+}
+
+.reservation-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.reservation-form .submit-button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.reservation-form .submit-button:hover {
+    background-color: #ffed4a;
+}
+
+/* Form Status Message Styles */
+.form-status {
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 500;
+}
+.form-status.success {
+    color: green;
+}
+.form-status.error {
+    color: red;
+}
+
+.close-menu {
+    display: none; /* Hidden by default */
+}
+
+/* Swiper Navigation Buttons - Hide them */
+.swiper-button-next,
+.swiper-button-prev {
+    display: none !important; /* Ensure they are hidden */
+}
+
+/* Swiper Pagination */
+.swiper-pagination {
+    position: absolute; /* Position relative to menu-section */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    bottom: 20px !important; /* Position dots lower within the section's padding */
+    width: auto; /* Allow width to fit content */
+}
+
+.swiper-pagination-bullet {
+    background-color: #ccc;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #ffd700; /* Gold color for active bullet */
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem 5%;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger on mobile */
+        z-index: 1002; /* Ensure hamburger is above overlay background */
+        position: relative; /* Needed for z-index */
+        transition: opacity 0.3s ease; /* Add transition for smooth hiding */
+    }
+
+    /* Hide hamburger when menu is open */
+    .hamburger.open {
+        opacity: 0;
+        pointer-events: none; /* Disable clicks on hidden hamburger */
+    }
+
+    /* Overlay Menu Styles */
+    .nav-links {
+        position: fixed; /* Change to fixed for overlay */
+        top: 0;
+        left: -100%; /* Start off-screen */
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.98);
+        flex-direction: column;
+        justify-content: center; /* Center links vertically */
+        align-items: center;
+        padding: 2rem 0;
+        margin-top: 0;
+        text-align: center;
+        transition: left 0.3s ease-in-out; /* Slide-in transition */
+        z-index: 1001; /* Ensure menu is above content */
+        display: flex; /* Keep flex for alignment, visibility handled by 'left' */
+    }
+
+    .nav-links.open {
+        left: 0; /* Slide in */
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0; /* Increased spacing */
+    }
+    .nav-links a {
+        font-size: 1.3rem; /* Larger in overlay */
+    }
+
+    .close-menu {
+        display: block; /* Show close button in overlay */
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2.5rem;
+        cursor: pointer;
+        z-index: 1002; /* Ensure close button is above overlay content */
+    }
+
+    /* Adjust button padding for easier tapping */
+    .cta-button,
+    .submit-button,
+    .reservation-form .submit-button {
+        padding: 0.7rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust form group spacing */
+    .form-group,
+    .reservation-form .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    /* Remove body padding adjustments */
+    /* body.body-menu-open { ... } - Removed */
+
+    .hero h1 {
+        font-size: 3rem;
+        margin: 0.5rem 0;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .reservation-form {
+        padding: 2rem;
+    }
+
+    .reservation-form {
+        padding: 1.5rem;
+    }
+
+    .menu-section {
+        padding-bottom: 50px; /* Adjust padding for mobile */
+    }
+
+    .menu-swiper {
+        /* padding-bottom: 80px; */ /* Removed */
+    }
+
+    .swiper-pagination {
+        bottom: 15px !important; /* Adjust position for mobile */
+    }
+
+    .menu-item {
+        width: 100%;
+    }
+
+    /* Remove rule hiding arrows specifically on mobile */
+    /* .swiper-button-next, */
+    /* .swiper-button-prev { */
+    /*     display: none; */
+    /* } */
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .header {
+        background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80');
+    }
+}
+
+/* Menu Page Styles */
+.menu-header {
+    height: 70vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.menu-header .hero h1 {
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.menu-header .hero p {
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.menu-section {
+    padding: 6rem 10%;
+    background-color: #f8f8f8;
+    position: relative;
+}
+
+.menu-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.menu-category {
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+.menu-category h2 {
+    color: var(--secondary-color);
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.menu-category h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 2px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(192, 160, 98, 0.1);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(192, 160, 98, 0.03));
+    transition: all 0.4s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: rgba(192, 160, 98, 0.3);
+}
+
+.menu-item:hover::before {
+    background: linear-gradient(45deg, transparent, rgba(192, 160, 98, 0.08));
+}
+
+.menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.menu-item-header::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.menu-item:hover .menu-item-header::after {
+    width: 100%;
+}
+
+.menu-item-header h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.price {
+    font-family: var(--font-headings);
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    position: relative;
+    padding: 0.5rem 1rem;
+    background: rgba(192, 160, 98, 0.05);
+    border-radius: 2px;
+}
+
+.description {
+    color: var(--text-color-light);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+    .menu-header {
+        height: 50vh;
+    }
+
+    .menu-header .hero h1 {
+        font-size: 3rem;
+    }
+
+    .menu-section {
+        padding: 4rem 5%;
+    }
+
+    .menu-items {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .menu-item {
+        padding: 2rem;
+    }
+
+    .menu-category h2 {
+        font-size: 2.2rem;
+    }
+
+    .menu-item-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .price {
+        font-size: 1.1rem;
+    }
+}
+
+/* Menu Item Modal Styles */
+.menu-item-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-item-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    border-radius: 2px;
+    overflow: hidden;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.menu-item-modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.close-modal:hover {
+    transform: rotate(90deg);
+}
+
+.modal-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-details {
+    padding: 2rem;
+    background: white;
+}
+
+.modal-details h3 {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color-light);
+}
+
+/* Menu Item Hover Effect */
+.menu-item {
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item::after {
+    content: 'Детальніше';
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.menu-item.show-details::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .menu-item {
+        cursor: default;
+    }
+
+    .menu-item::after {
+        content: 'Натисніть для деталей';
+        opacity: 1;
+        transform: translateY(0);
+        font-size: 0.8rem;
+        bottom: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .menu-item:active {
+        transform: scale(0.98);
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem auto;
+    }
+
+    .modal-image {
+        height: 250px;
+    }
+
+    .modal-details {
+        padding: 1.5rem;
+    }
+
+    .modal-details h3 {
+        font-size: 1.6rem;
+    }
+
+    .modal-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .close-modal {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.8rem;
+        padding: 0.5rem;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .menu-item::after {
+        content: 'Натисніть для деталей';
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .menu-item:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Menu Filters */
+.menu-filters {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+}
+
+.search-box {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.5rem;
+    border: 1px solid rgba(192, 160, 98, 0.2);
+    border-radius: 30px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(192, 160, 98, 0.1);
+}
+
+.search-button {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.search-button:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.category-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-button {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 25px;
+    background: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover,
+.filter-button.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Animation for filtered items */
+.menu-category {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-category.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.menu-category.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile styles for filters */
+@media (max-width: 768px) {
+    .menu-filters {
+        margin-bottom: 2rem;
+    }
+
+    .search-box {
+        margin-bottom: 1.5rem;
+    }
+
+    .search-box input {
+        padding: 0.8rem 2.5rem 0.8rem 1rem;
+        font-size: 1rem;
+    }
+
+    .category-filters {
+        gap: 0.5rem;
+    }
+
+    .filter-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Анімації для елементів */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Затримки анімацій для галереї */
+.gallery-item:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.gallery-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.gallery-item:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.gallery-item:nth-child(4) {
+    transition-delay: 0.6s;
+}
+
+/* Додаткові ефекти для елементів */
+.hero h1 {
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero p {
+    animation: fadeInUp 1s ease-out 0.5s backwards;
+}
+
+.hero .cta-button {
+    animation: fadeInUp 1s ease-out 1s backwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ефект паралаксу для секцій */
+.about-section,
+.special-offers-section,
+.testimonials-section,
+.chefs-section,
+.events-section,
+.features-section,
+.gallery-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before,
+.special-offers-section::before,
+.testimonials-section::before,
+.chefs-section::before,
+.events-section::before,
+.features-section::before,
+.gallery-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    opacity: 0.3;
+}
+
+/* Ефект світіння для кнопок */
+.cta-button,
+.submit-button,
+.offer-button,
+.event-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::after,
+.submit-button::after,
+.offer-button::after,
+.event-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    transition: all 0.3s ease-out;
+    opacity: 0;
+}
+
+.cta-button:hover::after,
+.submit-button:hover::after,
+.offer-button:hover::after,
+.event-button:hover::after {
+    opacity: 1;
+    transform: rotate(45deg) translate(-50%, -50%);
+}
+
+/* Плавні переходи для зображень */
+.gallery-item img,
+.chef-image img,
+.offer-image img {
+    transition: transform 0.5s ease-out, filter 0.5s ease-out;
+}
+
+.gallery-item:hover img,
+.chef-card:hover .chef-image img,
+.offer-card:hover .offer-image img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Стилі для слайдера відгуків */
+.testimonials-slider {
+    position: relative;
+    padding: 20px 0;
+}
+
+.swiper-pagination {
+    position: relative;
+    bottom: 0;
+    margin-top: 30px;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--gold-color);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 20px;
+    border-radius: 5px;
+}
+
+/* Адаптивні стилі для слайдера */
+@media (max-width: 768px) {
+    .testimonials-slider {
+        padding: 10px 0;
+    }
+    
+    .swiper-pagination {
+        margin-top: 20px;
+    }
+}
+
+/* Сторінка "Приватні Заходи" */
+
+.events-header {
+    height: 70vh; /* Висота заголовка для цієї сторінки */
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg'); /* Тематичне фонове зображення */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.events-header .hero h1 {
+    font-size: 4rem;
+}
+
+.events-header .hero p {
+    font-size: 1.3rem;
+}
+
+/* Секція залів */
+.event-spaces-section {
+    padding: 6rem 10%;
+    background-color: var(--light-background);
+}
+
+.spaces-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.space-card {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.space-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.space-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.space-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.space-card:hover .space-image img {
+    transform: scale(1.05);
+}
+
+.space-content {
+    padding: 2rem;
+}
+
+.space-content h3 {
+    font-family: var(--font-headings);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.space-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.space-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.space-features li {
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.space-features svg { /* Стилі для іконок (додайте свої SVG) */
+    width: 18px;
+    height: 18px;
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+}
+
+/* Секція послуг */
+.event-services-section {
+    padding: 6rem 10%;
+    background-color: #fdfaf6; /* Дуже світлий теплий фон */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem; /* Трохи більше відстані */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-item {
+    text-align: center;
+    padding: 2.5rem 2rem; /* Збільшив падінги */
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.service-item:hover {
+    transform: translateY(-8px); /* Збільшив підйом */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08); /* Посилив тінь */
+    background-color: #fff; /* Залишаємо білим, але можна змінити */
+    border-top: 3px solid var(--primary-color); /* Акцент зверху */
+    padding-top: calc(2.5rem - 2px); /* Компенсація товщини бордера */
+}
+
+.service-icon {
+    height: 60px; /* Фіксована висота для іконки */
+    margin: 0 auto 1.5rem; /* Збільшив відступ */
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease; /* Анімація іконки */
+}
+
+.service-item:hover .service-icon {
+    transform: scale(1.1); /* Збільшення іконки при наведенні */
+}
+
+.service-item h3 {
+    font-family: var(--font-headings);
+    font-size: 1.4rem; /* Трохи збільшив шрифт */
+    margin-bottom: 1rem;
+    color: var(--secondary-color); /* Темний заголовок */
+}
+
+.service-item p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* Секція форми запиту */
+.event-inquiry-section {
+    padding: 6rem 10%;
+    background-color: var(--light-background);
+}
+
+.inquiry-subtext {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.event-inquiry-form {
+    max-width: 800px; /* Ширша форма для більшої кількості полів */
+}
+
+.event-inquiry-form .form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.event-inquiry-form .form-row .form-group {
+    flex: 1;
+    margin-bottom: 0; /* Забираємо відступ у групі всередині ряду */
+}
+
+/* Адаптивність для форми запиту */
+@media (max-width: 768px) {
+    .event-inquiry-form .form-row {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 0;
+    }
+    .event-inquiry-form .form-row .form-group {
+        margin-bottom: 1.2rem; /* Повертаємо відступ на мобільних */
+    }
+}
+
+/* Сторінка "Кар'єра" */
+
+.career-header {
+    height: 70vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/3184431/pexels-photo-3184431.jpeg'); /* Тематичне зображення команди */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.career-header .hero h1 {
+    font-size: 4rem;
+}
+
+.career-header .hero p {
+    font-size: 1.3rem;
+}
+
+/* Секція "Чому у нас?" */
+.why-work-here-section {
+    padding: 6rem 10%;
+    background-color: white;
+}
+
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--light-background);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.07);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.benefit-icon svg {
+    width: 36px;
+    height: 36px;
+}
+
+.benefit-card h3 {
+    font-family: var(--font-headings);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.benefit-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Секція "Відкриті вакансії" */
+.open-positions-section {
+    padding: 6rem 10%;
+    background-color: var(--light-background);
+}
+
+.positions-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.position-item {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+    border-left: 5px solid transparent; /* Для ефекту при наведенні */
+}
+
+.position-item:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border-left-color: var(--primary-color);
+}
+
+.position-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap; /* Перенос на мобільних */
+    gap: 0.5rem;
+}
+
+.position-header h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.position-location {
+    font-size: 0.9rem;
+    color: #777;
+    background-color: #f0f0f0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+}
+
+.position-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+.apply-button {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--primary-color);
+}
+
+.apply-button:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.no-positions-message {
+    text-align: center;
+    margin-top: 3rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Секція "Як надіслати резюме?" */
+.how-to-apply-section {
+    padding: 5rem 10%;
+    text-align: center;
+    background-color: white;
+}
+
+.how-to-apply-section h2 {
+    margin-bottom: 2rem;
+}
+
+.how-to-apply-section p {
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.email-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.email-link:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+/* Стилі для Bootstrap Icons */
+.service-icon i,
+.benefit-icon i {
+    font-size: 36px; /* Розмір іконок */
+}
+
+.social-links i {
+    font-size: 24px; /* Розмір іконок соцмереж */
+}
+
+.footer-contact p i {
+    margin-right: 0.7rem; /* Відступ для іконок в контактах футера */
+    color: var(--primary-color); /* Золотий колір для іконок */
+    vertical-align: middle; /* Краще вирівнювання з текстом */
+}
+
+.space-features li i {
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+    font-size: 18px; /* Розмір іконок в характеристиках */
+    vertical-align: middle;
+}
+
+.footer-contact p a {
+    color: inherit; /* Успадковує колір від батьківського <p> */
+    text-decoration: none; /* Прибирає підкреслення */
+    transition: color 0.3s ease;
+}
+
+.footer-contact p a:hover {
+    color: var(--primary-color); /* Змінює колір при наведенні */
+} 

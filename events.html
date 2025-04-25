@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Організація банкетів, весіль, корпоративів та приватних заходів у ресторані Місто. Елегантні зали, індивідуальне меню та професійне обслуговування.">
+    <title>Приватні Заходи - Ресторан Місто</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<body>
+    <header class="header events-header">
+        <nav class="nav">
+            <div class="logo"><a href="index.html">Місто</a></div>
+            <button class="hamburger" id="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <button class="close-menu" id="close-menu-button" aria-label="Close menu">&times;</button>
+                <li><a href="index.html#about">Про нас</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="index.html#gallery">Галерея</a></li>
+                <li><a href="events.html">Приватні заходи</a></li>
+                <li><a href="index.html#reservation">Бронювання</a></li>
+                <li><a href="career.html">Кар'єра</a></li>
+                <li><a href="index.html#contact">Контакти</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Приватні Заходи та Банкети</h1>
+            <p>Ідеальне місце для ваших особливих подій</p>
+            <a href="#event-inquiry" class="cta-button">Надіслати запит</a>
+        </div>
+    </header>
+
+    <section id="event-spaces" class="event-spaces-section">
+        <h2>Наші Зали</h2>
+        <div class="spaces-container">
+            <div class="space-card animate-on-scroll">
+                <div class="space-image">
+                    <img src="https://images.pexels.com/photos/1449775/pexels-photo-1449775.jpeg" alt="Головний зал" loading="lazy">
+                </div>
+                <div class="space-content">
+                    <h3>Головний Зал</h3>
+                    <p>Просторий та елегантний зал, ідеально підходить для весіль, великих ювілеїв та корпоративних вечірок. Вміщує до 100 гостей.</p>
+                    <ul class="space-features">
+                        <li><i class="bi bi-arrows-fullscreen"></i> Площа: 150 м²</li>
+                        <li><i class="bi bi-people-fill"></i> Місткість: до 100 осіб</li>
+                        <li><i class="bi bi-projector"></i> Проектор та екран</li>
+                        <li><i class="bi bi-lightbulb"></i> Професійне освітлення</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="space-card animate-on-scroll">
+                <div class="space-image">
+                    <img src="https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg" alt="VIP-кімната" loading="lazy">
+                </div>
+                <div class="space-content">
+                    <h3>VIP-Кімната</h3>
+                    <p>Затишна та камерна атмосфера для невеликих святкувань, ділових зустрічей або приватних вечерь. Розрахована на 20 гостей.</p>
+                     <ul class="space-features">
+                        <li><i class="bi bi-arrows-fullscreen"></i> Площа: 40 м²</li>
+                        <li><i class="bi bi-people-fill"></i> Місткість: до 20 осіб</li>
+                        <li><i class="bi bi-door-open"></i> Окремий вхід</li>
+                        <li><i class="bi bi-easel"></i> Конференц-зв'язок</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="space-card animate-on-scroll">
+                <div class="space-image">
+                    <img src="https://images.pexels.com/photos/3648317/pexels-photo-3648317.jpeg" alt="Літня тераса" loading="lazy">
+                </div>
+                <div class="space-content">
+                    <h3>Літня Тераса</h3>
+                    <p>Чудове місце для заходів на свіжому повітрі в теплу пору року. Мальовничий вид та комфортні меблі. До 50 гостей.</p>
+                     <ul class="space-features">
+                        <li><i class="bi bi-arrows-fullscreen"></i> Площа: 80 м²</li>
+                        <li><i class="bi bi-people-fill"></i> Місткість: до 50 осіб</li>
+                        <li><i class="bi bi-umbrella"></i> Навіс від сонця/дощу</li>
+                        <li><i class="bi bi-bar-chart"></i> Барна стійка</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="event-services" class="event-services-section">
+        <h2>Наші Послуги</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                 <div class="service-icon"><i class="bi bi-journal-richtext"></i></div>
+                 <h3>Банкетне Меню</h3>
+                 <p>Розробка індивідуального меню відповідно до ваших побажань та бюджету.</p>
+            </div>
+             <div class="service-item">
+                 <div class="service-icon"><i class="bi bi-palette"></i></div>
+                 <h3>Декорування</h3>
+                 <p>Оформлення залу квітами, тканинами, освітленням для створення святкової атмосфери.</p>
+            </div>
+             <div class="service-item">
+                 <div class="service-icon"><i class="bi bi-music-note-beamed"></i></div>
+                 <h3>Музичний Супровід</h3>
+                 <p>Підбір живої музики, DJ або створення плейлиста для вашого заходу.</p>
+            </div>
+             <div class="service-item">
+                 <div class="service-icon"><i class="bi bi-gear-wide-connected"></i></div>
+                 <h3>Технічне Забезпечення</h3>
+                 <p>Надання проекторів, звукового обладнання, мікрофонів.</p>
+            </div>
+            <div class="service-item">
+                 <div class="service-icon"><i class="bi bi-person-check-fill"></i></div>
+                 <h3>Обслуговування</h3>
+                 <p>Професійні офіціанти та менеджери заходів для бездоганного сервісу.</p>
+            </div>
+             <div class="service-item">
+                 <div class="service-icon"><i class="bi bi-camera-reels"></i></div>
+                 <h3>Фото та Відео</h3>
+                 <p>Рекомендації та співпраця з перевіреними фотографами та відеографами.</p>
+            </div>
+        </div>
+    </section>
+
+     <section id="event-inquiry" class="event-inquiry-section">
+        <h2>Надішліть Запит</h2>
+        <p class="inquiry-subtext">Розкажіть нам більше про вашу подію, і наш менеджер зв'яжеться з вами для обговорення деталей.</p>
+        <div class="reservation-form event-inquiry-form">
+            <form id="eventInquiryForm" action="https://formspree.io/f/your_event_form_id" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="event-name">Ваше ім'я</label>
+                        <input type="text" id="event-name" name="Ім'я" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-phone">Телефон</label>
+                        <input type="tel" id="event-phone" name="Телефон" required>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="event-email">Email</label>
+                    <input type="email" id="event-email" name="Email" required>
+                 </div>
+                 <div class="form-row">
+                    <div class="form-group">
+                        <label for="event-date">Орієнтовна дата</label>
+                        <input type="date" id="event-date" name="Дата заходу" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-guests">Кількість гостей (приблизно)</label>
+                        <input type="number" id="event-guests" name="Кількість гостей" min="1" required>
+                    </div>
+                 </div>
+                <div class="form-group">
+                    <label for="event-type">Тип події</label>
+                    <select id="event-type" name="Тип події" required>
+                        <option value="">Оберіть тип</option>
+                        <option value="Весілля">Весілля</option>
+                        <option value="День народження/Ювілей">День народження/Ювілей</option>
+                        <option value="Корпоратив">Корпоратив</option>
+                        <option value="Конференція/Презентація">Конференція/Презентація</option>
+                        <option value="Дитяче свято">Дитяче свято</option>
+                        <option value="Інше">Інше</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="event-details">Додаткова інформація та побажання</label>
+                    <textarea id="event-details" name="Деталі заходу" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Надіслати запит</button>
+            </form>
+            <p id="event-form-status" class="form-status"></p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section footer-social">
+                <h4>Ми в соцмережах</h4>
+                <div class="social-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+                    </div>
+            </div>
+            <div class="footer-section footer-links">
+                 <h4>Швидкі посилання</h4>
+                 <ul>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="events.html">Приватні заходи</a></li>
+                    <li><a href="/#reservation">Бронювання</a></li>
+                    <li><a href="/#gallery">Галерея</a></li>
+                    <li><a href="career.html">Кар'єра</a></li>
+                 </ul>
+            </div>
+            <div class="footer-section footer-contact">
+                <h4>Контакти</h4>
+                <p><i class="bi bi-geo-alt-fill"></i> вул. Центральна, 1, м. Львів</p>
+                <p><i class="bi bi-telephone-fill"></i> <a href="tel:+380321234567">+380 (32) 123-45-67</a></p>
+                <p><i class="bi bi-clock-fill"></i> Пн-Нд: 11:00 - 23:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ресторан Місто. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Google Maps API Script -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script> -->
+    <script src="script.min.js"></script>
+</body>
+</html> 

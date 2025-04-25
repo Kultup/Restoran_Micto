@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ознайомтесь з меню ресторану Місто: вишукані закуски, основні страви української та європейської кухні, авторські десерти та багата винна карта.">
+    <title>Меню - Ресторан Місто</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header class="header menu-header">
+        <nav class="nav">
+            <div class="logo"><a href="index.html">Місто</a></div>
+            <button class="hamburger" id="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <button class="close-menu" id="close-menu-button" aria-label="Close menu">&times;</button>
+                <li><a href="index.html#about">Про нас</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="index.html#gallery">Галерея</a></li>
+                <li><a href="index.html#reservation">Бронювання</a></li>
+                <li><a href="index.html#contact">Контакти</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Наше Меню</h1>
+            <p>Неповторні смаки української кухні</p>
+        </div>
+    </header>
+
+    <section class="menu-section">
+        <div class="menu-filters">
+            <div class="search-box">
+                <input type="text" id="menuSearch" placeholder="Пошук страв...">
+                <button type="button" class="search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="category-filters">
+                <button class="filter-button active" data-category="all">Всі страви</button>
+                <button class="filter-button" data-category="starters">Закуски</button>
+                <button class="filter-button" data-category="main">Основні страви</button>
+                <button class="filter-button" data-category="desserts">Десерти</button>
+                <button class="filter-button" data-category="drinks">Напої</button>
+            </div>
+        </div>
+
+        <div class="menu-category" data-category="starters">
+            <h2>Закуски</h2>
+            <div class="menu-items">
+                <div class="menu-item" data-details="Традиційний український борщ, приготований за сімейним рецептом. Подається з домашніми пампушками, сметаною та зеленню. Готовиться з відборної яловичини та свіжих овочів." data-image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Борщ</h3>
+                        <span class="price">₴180</span>
+                    </div>
+                    <p class="description">Традиційний український борщ з пампушками</p>
+                </div>
+                <div class="menu-item" data-details="Класичний салат Цезар з ніжним курячим філе, свіжим пармезаном, крутонами та домашнім соусом цезар. Подається з грінками та додатковою порцією соусу." data-image="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Салат "Цезар"</h3>
+                        <span class="price">₴220</span>
+                    </div>
+                    <p class="description">З курячим філе, пармезаном та соусом цезар</p>
+                </div>
+                <div class="menu-item" data-details="Ніжний тартар зі свіжого лосося, приготований з авокадо, каперсами та цибулею. Подається з домашнім соусом та грінками. Ідеальний вибір для легкого закуску." data-image="https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Тартар з лосося</h3>
+                        <span class="price">₴280</span>
+                    </div>
+                    <p class="description">З авокадо, каперсами та соусом</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category" data-category="main">
+            <h2>Основні страви</h2>
+            <div class="menu-items">
+                <div class="menu-item" data-details="Ніжна телятина в паніровці, приготована за віденським рецептом. Подається з картопляним пюре, овочами гриль та соусом. Ідеальне поєднання текстур та смаків." data-image="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Телятина по-віденськи</h3>
+                        <span class="price">₴420</span>
+                    </div>
+                    <p class="description">З картопляним пюре та овочами</p>
+                </div>
+                <div class="menu-item" data-details="Свіжий лосось, приготований на грилі до ідеальної ніжності. Подається з соусом беарнез, сезонними овочами та лимонним маслом. Багатий на омега-3 жирні кислоти." data-image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Лосось на грилі</h3>
+                        <span class="price">₴380</span>
+                    </div>
+                    <p class="description">З соусом беарнез та овочами</p>
+                </div>
+                <div class="menu-item" data-details="Класична італійська паста карбонара, приготована зі свіжої яєчної локшини, беконом, пармезаном та чорним перцем. Подається з додатковою порцією пармезану." data-image="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Паста Карбонара</h3>
+                        <span class="price">₴320</span>
+                    </div>
+                    <p class="description">З беконом, яйцем та пармезаном</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category" data-category="desserts">
+            <h2>Десерти</h2>
+            <div class="menu-items">
+                <div class="menu-item" data-details="Класичний італійський десерт, приготований з еспресо, маскарпоне, яєць та бісквітних печива. Посипаний какао та подається з додатковою порцією кави." data-image="https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Тірамісу</h3>
+                        <span class="price">₴180</span>
+                    </div>
+                    <p class="description">Класичний італійський десерт</p>
+                </div>
+                <div class="menu-item" data-details="Ніжний чізкейк з крем-сиру, приготований на водяній бані. Подається з домашнім малиновим соусом та свіжими ягодами. Ідеальне поєднання кислості та солодкості." data-image="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Чізкейк</h3>
+                        <span class="price">₴160</span>
+                    </div>
+                    <p class="description">З малиновим соусом</p>
+                </div>
+                <div class="menu-item" data-details="Домашнє морозиво, приготоване з натуральних вершків та свіжих фруктів. Подається з вибором топінгів: шоколадна стружка, горіхи, карамельний соус або свіжі фрукти." data-image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Морозиво</h3>
+                        <span class="price">₴140</span>
+                    </div>
+                    <p class="description">Домашнє морозиво з топінгом</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category" data-category="drinks">
+            <h2>Напої та коктейлі</h2>
+            <div class="menu-items">
+                <div class="menu-item" data-details="Класичний італійський еспресо, приготований з відбірних зерен. Подається з цукром та печивом. Ідеальний вибір для завершення трапези." data-image="https://images.pexels.com/photos/6802983/pexels-photo-6802983.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Еспресо</h3>
+                        <span class="price">₴80</span>
+                    </div>
+                    <p class="description">Класичний італійський еспресо</p>
+                </div>
+                <div class="menu-item" data-details="Освіжаючий мохіто з свіжою м'ятою, лаймом та ромом. Подається з крижаною стружкою та цукровим сиропом. Ідеальний вибір для спекотної погоди." data-image="https://images.pexels.com/photos/2789328/pexels-photo-2789328.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Мохіто</h3>
+                        <span class="price">₴160</span>
+                    </div>
+                    <p class="description">З м'ятою та лаймом</p>
+                </div>
+                <div class="menu-item" data-details="Домашнє лимонадне морозиво з м'ятою та медом. Подається з додатковою порцією морозива та свіжими фруктами. Освіжаючий десертний напій." data-image="https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg">
+                    <div class="menu-item-header">
+                        <h3>Лимонадне морозиво</h3>
+                        <span class="price">₴120</span>
+                    </div>
+                    <p class="description">З м'ятою та медом</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="menu-item-modal" id="menuItemModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-image">
+                <img src="" alt="Страва" loading="lazy">
+            </div>
+            <div class="modal-details">
+                <h3></h3>
+                <p class="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section footer-social">
+                <h4>Ми в соцмережах</h4>
+                <div class="social-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+                    </div>
+            </div>
+            <div class="footer-section footer-links">
+                 <h4>Швидкі посилання</h4>
+                 <ul>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="events.html">Приватні заходи</a></li>
+                    <li><a href="/#reservation">Бронювання</a></li>
+                    <li><a href="/#gallery">Галерея</a></li>
+                    <li><a href="career.html">Кар'єра</a></li>
+                 </ul>
+            </div>
+            <div class="footer-section footer-contact">
+                <h4>Контакти</h4>
+                <p><i class="bi bi-geo-alt-fill"></i> вул. Центральна, 1, м. Львів</p>
+                <p><i class="bi bi-telephone-fill"></i> <a href="tel:+380321234567">+380 (32) 123-45-67</a></p>
+                <p><i class="bi bi-clock-fill"></i> Пн-Нд: 11:00 - 23:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ресторан Місто. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="script.min.js"></script>
+    <script src="menu.min.js"></script>
+</body>
+</html> 

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Disallow admin and system files
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /admin/
+Disallow: /*.php$
+Disallow: /*.sql$
+Disallow: /*.log$ 
